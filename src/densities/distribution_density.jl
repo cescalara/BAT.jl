@@ -31,12 +31,12 @@ logvalof_unchecked(density::DistributionDensity, v::AbstractVector{<:Real}) = Di
 
 ValueShapes.varshape(density::DistributionDensity) = varshape(density.dist)
 
-Distributions.sampler(density::DistributionDensity{<:MultivariateDistribution}) = bat_sampler(unshaped(density.dist))
+Distributions.sampler(density::DistributionDensity) = bat_sampler(unshaped(density.dist))
 
 
 # Random.Sampler(rng::AbstractRNG, density::DistributionDensity, repetition::Val{1}) = sampler(density)
 
-Statistics.cov(density::DistributionDensity{<:MultivariateDistribution}) = cov(unshaped(density.dist))
+Statistics.cov(density::DistributionDensity) = cov(unshaped(density.dist))
 
 
 var_bounds(density::DistributionDensity) = density.bounds
