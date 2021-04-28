@@ -321,6 +321,7 @@ function ahmc_step!(rng, algorithm, chain, proposed_params, current_params)
         i = chain.adaptor.state.i
         n_adapts = algorithm.adaptor.n_adapts
     else
+        # what is this for?
         i, n_adapts = chain.info.converged ? (3, 2) : (1, 1)
     end
     
@@ -334,14 +335,12 @@ function ahmc_step!(rng, algorithm, chain, proposed_params, current_params)
         tstat.acceptance_rate
     )
 
-   
-    if i == n_adapts
-        chain.info = MCMCIteratorInfo(chain.info, tuned = isadapted)
-    end
+   #if i == n_adapts
+   #     chain.info = MCMCIteratorInfo(chain.info, tuned = true)
+   #end
 
-    tstat = merge(tstat, (is_adapt=isadapted,))
-
+   #tstat = merge(tstat, (is_adapt=isadapted,))
     
-    proposed_params[:] = chain.transition.z.θ
-    nothing
+   proposed_params[:] = chain.transition.z.θ
+   nothing
 end

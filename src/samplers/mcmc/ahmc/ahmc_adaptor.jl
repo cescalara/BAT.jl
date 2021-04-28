@@ -14,7 +14,7 @@ end
 
 @with_kw struct StanHMCAdaptor <: HMCAdaptor
     target_acceptance::Float64 = 0.8
-    n_adapts::Int64 = 500
+    n_adapts::Int64 = 1000
 end
 
 
